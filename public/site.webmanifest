@@ -1,0 +1,8 @@
+{
+  "name": "Laref Ibrahim - Short-Form Video Editor",
+  "short_name": "Laref Ibrahim",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }],
+  "theme_color": "#0C0C0C",
+  "background_color": "#0C0C0C",
+  "display": "standalone"
+}

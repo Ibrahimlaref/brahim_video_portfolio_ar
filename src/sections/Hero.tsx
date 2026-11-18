@@ -22,7 +22,6 @@ export default function Hero({ onNavClick }: HeroProps) {
   const textBlockRef = useRef<HTMLDivElement>(null);
 
   const imageWrapRef = useRef<HTMLDivElement>(null);
-  const imageFrameRef = useRef<HTMLDivElement>(null);
   const playBadgeRef = useRef<HTMLButtonElement>(null);
   const timelineCardRef = useRef<HTMLDivElement>(null);
   const playheadRef = useRef<HTMLDivElement>(null);
@@ -70,7 +69,7 @@ export default function Hero({ onNavClick }: HeroProps) {
       tl.from(ctaRowRef.current.children, { y: 18, opacity: 0, stagger: 0.1, duration: 0.55, ease: 'power3.out' }, '-=0.35');
     }
     if (imageWrapRef.current) {
-      tl.from(imageWrapRef.current, { x: 60, opacity: 0, scale: 0.92, duration: 1.1, ease: 'power3.out' }, '-=1.1');
+      tl.from(imageWrapRef.current, { opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.8');
     }
     if (timelineCardRef.current) {
       tl.from(timelineCardRef.current, { y: 40, opacity: 0, scale: 0.9, duration: 0.8, ease: 'back.out(1.5)' }, '-=0.7');
@@ -139,7 +138,6 @@ export default function Hero({ onNavClick }: HeroProps) {
     if (isTouchDevice) return;
 
     const targets: { el: HTMLElement | null; strength: number }[] = [
-      { el: imageFrameRef.current, strength: 14 },
       { el: timelineCardRef.current, strength: 24 },
       { el: statChipARef.current, strength: 30 },
       { el: statChipBRef.current, strength: -26 },
@@ -169,15 +167,6 @@ export default function Hero({ onNavClick }: HeroProps) {
         s.x(relX * s.strength);
         s.y(relY * s.strength);
       });
-
-      if (imageFrameRef.current) {
-        gsap.to(imageFrameRef.current, {
-          rotateY: relX * 10,
-          rotateX: -relY * 10,
-          duration: 0.7,
-          ease: 'power3.out',
-        });
-      }
     }
 
     function handleMouseLeave() {
@@ -186,9 +175,6 @@ export default function Hero({ onNavClick }: HeroProps) {
         s.x(0);
         s.y(0);
       });
-      if (imageFrameRef.current) {
-        gsap.to(imageFrameRef.current, { rotateY: 0, rotateX: 0, duration: 0.8, ease: 'power3.out' });
-      }
     }
 
     section.addEventListener('mousemove', handleMouseMove);
@@ -208,12 +194,6 @@ export default function Hero({ onNavClick }: HeroProps) {
       gsap.to(bgLayerRef.current, {
         yPercent: 16,
         opacity: 0.5,
-        ease: 'none',
-        scrollTrigger: { trigger: section, start: 'top top', end: 'bottom top', scrub: 0.6 },
-      });
-      gsap.to(imageWrapRef.current, {
-        yPercent: -10,
-        scale: 0.96,
         ease: 'none',
         scrollTrigger: { trigger: section, start: 'top top', end: 'bottom top', scrub: 0.6 },
       });
@@ -359,13 +339,11 @@ export default function Hero({ onNavClick }: HeroProps) {
 
         {/* Right: visual composition */}
         <div className="relative w-full md:w-[48%] flex items-center justify-center md:min-h-[420px]">
-          <div ref={imageWrapRef} className="relative flex items-center justify-center" style={{ perspective: '1000px' }}>
+          <div ref={imageWrapRef} className="relative flex items-center justify-center">
             <div
-              ref={imageFrameRef}
               className="relative"
               style={{
                 width: 'clamp(220px, 24vw, 380px)',
-                transformStyle: 'preserve-3d',
                 boxShadow: '16px 16px 0 rgba(204,255,0,0.9)',
                 border: '1px solid rgba(247,247,247,0.15)',
               }}
@@ -374,13 +352,8 @@ export default function Hero({ onNavClick }: HeroProps) {
                 src="/larefibrahim_image.jpg"
                 alt="Laref Ibrahim"
                 className="block w-full object-cover"
-                style={{ aspectRatio: '1 / 1' }}
+                style={{ aspectRatio: '1 / 1', objectPosition: 'center 35%' }}
               />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ background: 'linear-gradient(180deg, transparent 55%, rgba(12,12,12,0.55) 100%)' }}
-              />
-
               {/* Play badge - implies showreel */}
               <button
                 ref={playBadgeRef}

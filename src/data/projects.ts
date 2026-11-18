@@ -21,6 +21,8 @@ export interface Project {
   description: string;
   vimeoUrl: string;
   thumbnail: string;
+  /** Native display shape measured from the Vimeo video (width / height). */
+  aspectRatio: number;
   editingSkills: string[];
   featured?: boolean;
 }
@@ -28,14 +30,13 @@ export interface Project {
 // These links were supplied by Laref. Edit category/title/description when you
 // want to identify the exact format or subject of each video.
 export const projects: Project[] = [
-  { title: 'Short-form edit 01', category: 'Talking Head', description: 'A short-form edit focused on clear pacing and captions.', vimeoUrl: 'https://vimeo.com/1247202016?fl=ip&fe=ec&share=copy', thumbnail: 'https://vumbnail.com/1247202016.jpg', editingSkills: ['Pacing', 'Captions', 'Jump cuts'], featured: true },
-  { title: 'Short-form edit 03', category: 'Educational Shorts', description: 'A short edit with an emphasis on a clean, focused story.', vimeoUrl: 'https://vimeo.com/1247202012?fl=ip&fe=ec&share=copy', thumbnail: 'https://vumbnail.com/1247202012.jpg', editingSkills: ['Trimming', 'Captions', 'Transitions'] },
-  { title: 'Short-form edit 04', category: 'Social Media Reels', description: 'A vertical video edit for social media.', vimeoUrl: 'https://vimeo.com/1247202015?fl=ip&fe=ec&share=copy', thumbnail: 'https://vumbnail.com/1247202015.jpg', editingSkills: ['Vertical format', 'Captions', 'Music sync'] },
-  { title: 'Short-form edit 06', category: 'Social Media Reels', description: 'A mobile-first edit with concise cuts and synchronized audio.', vimeoUrl: 'https://vimeo.com/1247238688?fl=ip&fe=ec&share=copy', thumbnail: 'https://vumbnail.com/1247238688.jpg', editingSkills: ['Trimming', 'Music sync', 'Sound effects'] },
-  { title: 'Short-form edit 07', category: 'Promotional Videos', description: 'A short promotional edit for a social audience.', vimeoUrl: 'https://vimeo.com/1247238690?fl=ip&fe=ec&share=copy', thumbnail: 'https://vumbnail.com/1247238690.jpg', editingSkills: ['Storytelling', 'Transitions', 'Sound sync'] },
-  { title: 'Short-form edit 08', category: 'Promotional Videos', description: 'A concise edit shaped for short-form promotion.', vimeoUrl: 'https://vimeo.com/1247238828?fl=ip&fe=ec&share=copy', thumbnail: 'https://vumbnail.com/1247238828.jpg', editingSkills: ['Pacing', 'B-roll', 'Captions'] },
-  { title: 'Short-form edit 09', category: 'Social Media Reels', description: 'A short-form edit for social media.', vimeoUrl: 'https://vimeo.com/1247978302?fl=ip&fe=ec&share=copy', thumbnail: 'https://vumbnail.com/1247978302.jpg', editingSkills: ['Pacing', 'Captions', 'Music sync'] },
-  { title: 'Short-form edit 10', category: 'Social Media Reels', description: 'A short-form edit for social media.', vimeoUrl: 'https://vimeo.com/1247978304?fl=ip&fe=ec&share=copy', thumbnail: 'https://vumbnail.com/1247978304.jpg', editingSkills: ['Pacing', 'Captions', 'Music sync'] },
+  { title: 'Cold-Weather Street Story', category: 'Talking Head', description: 'A direct-to-camera outdoor clip with conversational pacing and clean cuts.', vimeoUrl: 'https://vimeo.com/1247202016?fl=ip&fe=ec&share=copy', thumbnail: 'https://vumbnail.com/1247202016.jpg', aspectRatio: 240 / 426, editingSkills: ['Pacing', 'Captions', 'Jump cuts'], featured: true },
+  { title: 'A Quiet Moment in the Mountains', category: 'Educational Shorts', description: 'A scenic short centered on a calm outdoor moment and natural imagery.', vimeoUrl: 'https://vimeo.com/1247202012?fl=ip&fe=ec&share=copy', thumbnail: 'https://vumbnail.com/1247202012.jpg', aspectRatio: 240 / 426, editingSkills: ['Trimming', 'Transitions', 'Visual storytelling'] },
+  { title: 'Vertical Storytelling', category: 'Social Media Reels', description: 'A mobile-first edit composed for a vertical social video frame.', vimeoUrl: 'https://vimeo.com/1247202015?fl=ip&fe=ec&share=copy', thumbnail: 'https://vumbnail.com/1247202015.jpg', aspectRatio: 426 / 240, editingSkills: ['Vertical format', 'Captions', 'Music sync'] },
+  { title: 'Alo: Talking-Head Product Clip', category: 'Social Media Reels', description: 'A concise creator-style clip with subtitles and focused pacing.', vimeoUrl: 'https://vimeo.com/1247238688?fl=ip&fe=ec&share=copy', thumbnail: 'https://vumbnail.com/1247238688.jpg', aspectRatio: 240 / 426, editingSkills: ['Trimming', 'Captions', 'Sound effects'] },
+  { title: 'Portrait in Focus', category: 'Promotional Videos', description: 'A dramatic close-up edit that uses color and pacing to hold attention.', vimeoUrl: 'https://vimeo.com/1247238828?fl=ip&fe=ec&share=copy', thumbnail: 'https://vumbnail.com/1247238828.jpg', aspectRatio: 240 / 426, editingSkills: ['Pacing', 'Color adjustments', 'Captions'] },
+  { title: 'Golf Swing: Focus Before the Shot', category: 'Promotional Videos', description: 'A quick golf clip cut around the player and the moment before the shot.', vimeoUrl: 'https://vimeo.com/1247978302?fl=ip&fe=ec&share=copy', thumbnail: 'https://vumbnail.com/1247978302.jpg', aspectRatio: 240 / 426, editingSkills: ['Pacing', 'Captions', 'Music sync'] },
+  { title: 'Podcast Clip: First Piece of Advice', category: 'Podcast Editing', description: 'A French-language podcast excerpt featuring a guest sharing advice.', vimeoUrl: 'https://vimeo.com/1247978304?fl=ip&fe=ec&share=copy', thumbnail: 'https://vumbnail.com/1247978304.jpg', aspectRatio: 426 / 240, editingSkills: ['Podcast editing', 'Captions', 'Pacing'] },
 ];
 
 /** Converts Vimeo watch/player links to an embed URL and keeps privacy hashes. */

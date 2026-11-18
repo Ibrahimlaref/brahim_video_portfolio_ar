@@ -63,7 +63,7 @@ export default function WorkShowcase() {
           ))}
         </div>
 
-        <div className="[column-count:1] md:[column-count:2]" style={{ columnGap: '36px' }}>
+        <div className="mx-auto [column-count:1] md:[column-count:2]" style={{ maxWidth: '860px', columnGap: '36px' }}>
           {visibleProjects.map((project) => <VimeoCard key={project.vimeoUrl} project={project} />)}
         </div>
       </div>
